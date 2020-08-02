@@ -25,6 +25,22 @@ An easy and configurable way to take screenshots of your elegant code.
 
 ## Demo / Screenshot
 
+**Configuration Page**
+
+![Screenshot](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/screenshot.png)
+
+[Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/)
+
+![demo1](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/moonlightIIItalic-JetBransMMono.png)
+
+[OneDark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) + [FiraCode](https://github.com/tonsky/FiraCode)
+
+![demo2](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/onedarkPro-FiraCode.png)
+
+Light (Visual Studio) + Menlo
+
+![demo3](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/vscodeLight-Menlo.png)
+
 ## Credit
 
 Thanks to [dom-to-image](https://github.com/tsayen/dom-to-image) for generating the images from dom.

@@ -27,7 +27,9 @@ An easy and configurable way to take screenshots of your elegant code.
 
 **Configuration Page**
 
-![Screenshot](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/screenshot.png)
+<p style="text-align:center">
+<img src="https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/screenshot.png" width="80%" />
+</p>
 
 [Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/)
 

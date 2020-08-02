@@ -1,0 +1,230 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  --cfg-bgColor: #abb8c3;
+  --cfg-padding: 3;
+  --cfg-borderRadius: 4;
+  --cfg-boxShadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
+}
+
+body {
+  padding-top: 16px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  user-select: none;
+  font-variant-ligatures: normal;
+  font-family: var(--vscode-editor-font-family);
+}
+
+header,
+footer {
+  width: 100%;
+}
+
+header .cfg-section {
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+header .cfg-section-container,
+header .cfg-section-window {
+  height: 0px;
+  transition: all ease 300ms;
+}
+
+header .cfg-section-container.show {
+  height: 110px;
+}
+header .cfg-section-window.show {
+  height: 160px;
+}
+
+header .cfg-section:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .cfg-section fieldset {
+  border-radius: 2px;
+  padding: 4px 8px 8px;
+  border: solid 1px var(--vscode-editor-foreground);
+}
+
+header .cfg-section fieldset legend {
+  padding: 0 8px;
+}
+
+header .cfg-section fieldset > div {
+  display: flex;
+  align-items: center;
+  height: 2em;
+}
+
+header .cfg-section fieldset > div > * {
+  margin-right: 8px;
+}
+
+header .cfg-section .cfg-title {
+  text-transform: capitalize;
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  padding-right: 4px;
+}
+
+header .cfg-section input[type='number'] {
+  width: 44px;
+}
+
+footer {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  padding: 12px 0;
+  background: var(--vscode-editor-background);
+  border-top: solid 1px var(--vscode-editor-foreground);
+}
+
+button {
+  padding: 1em 2em;
+  cursor: pointer;
+  outline: none;
+  background: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+}
+
+button:hover {
+  color: var(--vscode-editor-background);
+  background: var(--vscode-editor-foreground);
+}
+
+button + button {
+  margin-left: 2em;
+}
+
+.code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: 24px;
+  padding: calc(var(--cfg-padding) * 1em);
+  background-color: var(--cfg-bgColor);
+  font-family: var(--vscode-editor-font-family);
+  font-size: calc(var(--vscode-editor-font-size) * 1px);
+  font-weight: var(--vscode-editor-font-weight);
+}
+
+.mac-window {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  resize: horizontal;
+  min-width: 100px;
+  padding: 18px;
+  border-radius: calc(var(--cfg-borderRadius) * 1px);
+  box-shadow: var(--cfg-boxShadow);
+  background-color: var(--vscode-editor-background);
+}
+
+.mac-window > .navbar {
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 15px;
+  height: 18px;
+}
+
+.mac-window > .navbar > .navbar-title {
+  margin: 0 70px;
+}
+
+.mac-window > .navbar > .navbar-controls {
+  display: flex;
+  float: left;
+  margin-top: 3px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.red {
+  background-color: #fc4022;
+}
+.yellow {
+  background-color: #e0b421;
+}
+.green {
+  background-color: #24d34e;
+}
+
+.code-snippet {
+  max-width: 100%;
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  color: var(--vscode-editor-foreground);
+  background-color: var(--vscode-editor-background);
+  border-radius: var(--window-border-radius);
+}
+
+.line {
+  display: flex;
+}
+
+.line-number-1,
+.line-number-2 {
+  text-align: right;
+  color: var(--vscode-editorLineNumber-foreground);
+  margin-right: 18px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.line-number-1 {
+  width: var(--line-number-1-width);
+}
+
+.line-number-2 {
+  width: var(--line-number-2-width);
+}
+
+.line-code {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.size-test {
+  font-family: var(--vscode-editor-font-family) !important;
+  font-size: calc(var(--vscode-editor-font-size) * 1px) !important;
+  display: inline-block;
+}
+
+.hide {
+  display: none !important;
+}
+
+#flash-fx {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #efefef;
+  transition: opacity 300ms ease;
+  opacity: 1;
+}

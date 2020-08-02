@@ -1,0 +1,60 @@
+{
+  "name": "coldcode",
+  "displayName": "ColdCode",
+  "description": "An easy and configurable way to take screenshots of your elegant code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericliu-el/coldcode.git"
+  },
+  "keywords": [
+    "screenshot",
+    "snippet",
+    "clipboard",
+    "share",
+    "coldcode"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:coldcode.start"
+  ],
+  "main": "./dist/main.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "coldcode.start",
+        "title": "ColdCode"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "coldcode.start"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development parcel watch --target node src/extension/main.ts",
+    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix",
+    "format": "prettier --write \"**/*.{js,jsx,md,json,css,prettierrc,eslintrc,html}\""
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "@types/vscode": "^1.47.0",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src %CSP_SOURCE% data: https:; script-src 'nonce-%NONCE%'; style-src 'unsafe-inline' %CSP_SOURCE%"
+    />
+    <title>ColdCode</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script nonce="%NONCE%" src="./scripts/dom-to-image.min.js" defer></script>
+    <script nonce="%NONCE%" src="./scripts/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <header>
+      <form name="cfg-form">
+        <div class="cfg-section">
+          <div>
+            <span>Target:</span>
+            <input type="radio" id="cfg-target-container" name="cfg-target" value="container" />
+            <label for="cfg-target-container">Container</label>
+            <input type="radio" id="cfg-target-window" name="cfg-target" value="window" />
+            <label for="cfg-target-window">Window</label>
+          </div>
+          <div>
+            <button class="reset-config hide">Reset</button>
+            <button class="toggle-config">Settings</button>
+          </div>
+        </div>
+
+        <div class="cfg-section cfg-section-container">
+          <fieldset>
+            <legend>Container</legend>
+            <div>
+              <span class="cfg-title">Background:</span>
+              <input type="color" name="cfg-bgColor" id="cfg-bgColor" />
+            </div>
+            <div>
+              <span class="cfg-title">Transparent:</span>
+              <input type="radio" id="cfg-bgTransparent-1" name="cfg-bgTransparent" value="1" />
+              <label for="cfg-bgTransparent-1">Yes</label>
+              <input type="radio" id="cfg-bgTransparent-0" name="cfg-bgTransparent" value="0" />
+              <label for="cfg-bgTransparent-0">No</label>
+            </div>
+            <div>
+              <span class="cfg-title">Padding:</span>
+              <input type="number" min="0" step="0.1" name="cfg-padding" id="cfg-padding" />em
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="cfg-section cfg-section-window">
+          <fieldset>
+            <legend>Window</legend>
+            <div>
+              <span class="cfg-title">Mac Style:</span>
+              <input type="radio" id="cfg-showControls-1" name="cfg-showControls" value="1" />
+              <label for="cfg-showControls-1">Yes</label>
+              <input type="radio" id="cfg-showControls-0" name="cfg-showControls" value="0" />
+              <label for="cfg-showControls-0">No</label>
+            </div>
+            <div>
+              <span class="cfg-title">Show Title:</span>
+              <input type="radio" id="cfg-showTitle-1" name="cfg-showTitle" value="1" />
+              <label for="cfg-showTitle-1">Yes</label>
+              <input type="radio" id="cfg-showTitle-0" name="cfg-showTitle" value="0" />
+              <label for="cfg-showTitle-0">No</label>
+            </div>
+            <div>
+              <span class="cfg-title">Line Number:</span>
+              <input type="radio" id="cfg-lineNumber-0" name="cfg-lineNumber" value="0" />
+              <label for="cfg-lineNumber-0">No line number</label>
+              <input type="radio" id="cfg-lineNumber-1" name="cfg-lineNumber" value="1" />
+              <label for="cfg-lineNumber-1">From 1</label>
+              <input type="radio" id="cfg-lineNumber-2" name="cfg-lineNumber" value="2" />
+              <label for="cfg-lineNumber-2">Real number</label>
+            </div>
+            <div>
+              <span class="cfg-title">Border Radius:</span>
+              <input type="number" min="0" step="1" name="cfg-borderRadius" id="cfg-borderRadius" />px
+            </div>
+            <div>
+              <span class="cfg-title">Box Shadow:</span>
+              <input type="color" name="cfg-boxShadowColor" />
+              <label for="cfg-boxShadowAlpha">alpha: </label>
+              <input type="number" min="0" max="1" step="0.01" id="cfg-boxShadowAlpha" name="cfg-boxShadowAlpha" />
+              <label for="cfg-boxShadowX">X: </label>
+              <input type="number" id="cfg-boxShadowX" name="cfg-boxShadowX" />
+              <label for="cfg-boxShadowY">Y: </label>
+              <input type="number" id="cfg-boxShadowY" name="cfg-boxShadowY" />
+              <label for="cfg-boxShadowZ">blur: </label>
+              <input type="number" id="cfg-boxShadowZ" name="cfg-boxShadowZ" />
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </header>
+
+    <main class="code-container">
+      <div class="mac-window">
+        <div class="navbar">
+          <div class="navbar-controls">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="navbar-title"></div>
+        </div>
+        <div class="code"></div>
+      </div>
+    </main>
+
+    <footer class="actions">
+      <button class="download">Download</button>
+      <button class="copy">Copy</button>
+    </footer>
+
+    <div id="flash-fx"></div>
+  </body>
+</html>

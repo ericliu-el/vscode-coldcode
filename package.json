@@ -1,11 +1,13 @@
 {
   "name": "coldcode",
   "displayName": "ColdCode",
-  "description": "An easy and configurable way to take screenshots of your elegant code",
+  "description": "An easy way to take screenshots of your elegant code",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.47.0"
   },
+  "publisher": "ericliu",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/ericliu-el/coldcode.git"
@@ -41,8 +43,10 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development parcel watch --target node src/extension/main.ts",
+    "build": "parcel build --target node src/extension/main.ts",
     "lint": "eslint '*/**/*.{js,ts}' --quiet --fix",
-    "format": "prettier --write \"**/*.{js,jsx,md,json,css,prettierrc,eslintrc,html}\""
+    "format": "prettier --write \"**/*.{js,jsx,md,json,css,prettierrc,eslintrc,html}\"",
+    "vscode:prepublish": "npm run lint && npm run format && npm run build"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",

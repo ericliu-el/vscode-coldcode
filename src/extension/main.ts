@@ -42,30 +42,22 @@ class ColdCode {
     // initial
     // 1. set webview's html; 2. post configuration to webview; 3. copy code if it exists
     this._setWebviewHTML(this._panel.webview);
-    this._postMsg('getCfg');
+    this._postCfg();
     const editor = vscode.window.activeTextEditor;
     editor && this._copy(editor.selections);
 
     // register listeners
     this._panel.onDidDispose(this.dispose, null, this._disposables);
-    this._panel.onDidChangeViewState(() => this._panel.visible && this._postMsg('getCfg'), null, this._disposables);
+    this._panel.onDidChangeViewState(() => this._panel.visible && this._postCfg(), null, this._disposables);
     this._panel.webview.onDidReceiveMessage((e) => this._msgHandler(e), null, this._disposables);
     vscode.window.onDidChangeTextEditorSelection((e) => this._copy(e.selections), null, this._disposables);
   }
 
-  private _postMsg(action: string): void {
-    switch (action) {
-      case 'getCfg':
-        this._panel.webview.postMessage({
-          action,
-          payload: this._state.get('config', defaultConfig),
-        });
-      case 'copy':
-        this._panel.webview.postMessage({
-          action,
-          payload: this._getEditorInfo(),
-        });
-    }
+  private _postCfg(): void {
+    this._panel.webview.postMessage({
+      action: 'getCfg',
+      payload: this._state.get('config', defaultConfig),
+    });
   }
 
   private _msgHandler({ action, payload }): void {
@@ -74,10 +66,10 @@ class ColdCode {
         saveImage(payload);
         break;
       case 'setCfg':
-        this._state.update('config', payload).then(() => this._postMsg('getCfg'));
+        this._state.update('config', payload).then(() => this._postCfg());
         break;
       case 'resetCfg':
-        this._state.update('config', defaultConfig).then(() => this._postMsg('getCfg'));
+        this._state.update('config', defaultConfig).then(() => this._postCfg());
         break;
       case 'info':
         vscode.window.setStatusBarMessage(payload, 4000);
@@ -87,7 +79,12 @@ class ColdCode {
 
   private _copy(selections: readonly vscode.Selection[]): void {
     if (selections && selections.length === 1 && !selections[0].isEmpty) {
-      vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction').then(() => this._postMsg('copy'));
+      vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction').then(() => {
+        this._panel.webview.postMessage({
+          action: 'copy',
+          payload: this._getEditorInfo(),
+        });
+      });
     }
   }
 

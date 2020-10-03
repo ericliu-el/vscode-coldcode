@@ -6,7 +6,8 @@ An easy and configurable way to take screenshots of your elegant code.
 
 - Realtime configuration, realtime effects
 - Download as `png` file or Copy to your clipboard
-- Show line numbers / titles
+- Show line numbers (From 1 or real line number)
+- Show title and customize title
 - Many other configuration options
 
 ## Usage

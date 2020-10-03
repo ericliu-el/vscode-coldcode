@@ -14,8 +14,8 @@
   </head>
   <body>
     <header>
-      <form name="cfg-form">
-        <div class="cfg-section">
+      <form name="cfg-form" onsubmit="return false">
+        <div class="cfg-section cfg-section-head">
           <div>
             <span>Target:</span>
             <input type="radio" id="cfg-target-container" name="cfg-target" value="container" />
@@ -24,8 +24,8 @@
             <label for="cfg-target-window">Window</label>
           </div>
           <div>
-            <button class="reset-config hide">Reset</button>
-            <button class="toggle-config">Settings</button>
+            <button type="button" class="reset-config hide">Reset</button>
+            <button type="button" class="toggle-config">Settings</button>
           </div>
         </div>
 
@@ -38,10 +38,10 @@
             </div>
             <div>
               <span class="cfg-title">Transparent:</span>
-              <input type="radio" id="cfg-bgTransparent-1" name="cfg-bgTransparent" value="1" />
-              <label for="cfg-bgTransparent-1">Yes</label>
               <input type="radio" id="cfg-bgTransparent-0" name="cfg-bgTransparent" value="0" />
               <label for="cfg-bgTransparent-0">No</label>
+              <input type="radio" id="cfg-bgTransparent-1" name="cfg-bgTransparent" value="1" />
+              <label for="cfg-bgTransparent-1">Yes</label>
             </div>
             <div>
               <span class="cfg-title">Padding:</span>
@@ -55,22 +55,23 @@
             <legend>Window</legend>
             <div>
               <span class="cfg-title">Mac Style:</span>
-              <input type="radio" id="cfg-showControls-1" name="cfg-showControls" value="1" />
-              <label for="cfg-showControls-1">Yes</label>
               <input type="radio" id="cfg-showControls-0" name="cfg-showControls" value="0" />
               <label for="cfg-showControls-0">No</label>
+              <input type="radio" id="cfg-showControls-1" name="cfg-showControls" value="1" />
+              <label for="cfg-showControls-1">Yes</label>
             </div>
             <div>
               <span class="cfg-title">Show Title:</span>
-              <input type="radio" id="cfg-showTitle-1" name="cfg-showTitle" value="1" />
-              <label for="cfg-showTitle-1">Yes</label>
               <input type="radio" id="cfg-showTitle-0" name="cfg-showTitle" value="0" />
               <label for="cfg-showTitle-0">No</label>
+              <input type="radio" id="cfg-showTitle-1" name="cfg-showTitle" value="1" />
+              <label for="cfg-showTitle-1">Yes</label>
+              <input type="text" name="customTitle" id="customTitle" placeholder="custom title" />
             </div>
             <div>
               <span class="cfg-title">Line Number:</span>
               <input type="radio" id="cfg-lineNumber-0" name="cfg-lineNumber" value="0" />
-              <label for="cfg-lineNumber-0">No line number</label>
+              <label for="cfg-lineNumber-0">No</label>
               <input type="radio" id="cfg-lineNumber-1" name="cfg-lineNumber" value="1" />
               <label for="cfg-lineNumber-1">From 1</label>
               <input type="radio" id="cfg-lineNumber-2" name="cfg-lineNumber" value="2" />
@@ -112,8 +113,8 @@
     </main>
 
     <footer class="actions">
-      <button class="download">Download</button>
-      <button class="copy">Copy</button>
+      <button type="button" class="download">Download</button>
+      <button type="button" class="copy">Copy</button>
     </footer>
 
     <div id="flash-fx"></div>

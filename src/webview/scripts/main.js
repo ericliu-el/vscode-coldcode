@@ -127,7 +127,8 @@ const setLineNumber = () => {
 const updateTitle = () => {
   const { windowTitle = 'coldcode' } = editorInfo;
   const titleNode = $('.code-container .navbar-title');
-  titleNode.textContent = windowTitle;
+  const customTitle = $('#customTitle').value || '';
+  titleNode.textContent = customTitle.trim() || windowTitle;
 };
 
 const setBoxShadow = () => {
@@ -158,6 +159,7 @@ const onCfgChange = () => {
 
   showControls === '1' ? delClass('hide', controlsNode) : addClass('hide', controlsNode);
   showTitle === '1' ? delClass('hide', titleNode) : addClass('hide', titleNode);
+  showTitle === '1' ? delClass('hide', $('#customTitle')) : addClass('hide', $('#customTitle'));
   showTitle === '0' && showControls === '0' ? addClass('hide', navNode) : delClass('hide', navNode);
 
   if (bgTransparent === '1' || target === 'window') {
@@ -225,6 +227,11 @@ $('.toggle-config').addEventListener('click', () => {
   cfgContainer.classList.toggle('show');
   cfgWindow.classList.toggle('show');
   $('.reset-config').classList.toggle('hide');
+});
+
+$('#customTitle').addEventListener('input', updateTitle);
+$('#customTitle').addEventListener('paste', (e) => {
+  e.preventDefault();
 });
 
 /**

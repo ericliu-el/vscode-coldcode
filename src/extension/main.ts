@@ -47,17 +47,19 @@ class ColdCode {
     editor && this._copy(editor.selections);
 
     // register listeners
-    this._panel.onDidDispose(this.dispose, null, this._disposables);
+    this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
     this._panel.onDidChangeViewState(() => this._panel.visible && this._postCfg(), null, this._disposables);
     this._panel.webview.onDidReceiveMessage((e) => this._msgHandler(e), null, this._disposables);
     vscode.window.onDidChangeTextEditorSelection((e) => this._copy(e.selections), null, this._disposables);
   }
 
   private _postCfg(): void {
-    this._panel.webview.postMessage({
-      action: 'getCfg',
-      payload: this._state.get('config', defaultConfig),
-    });
+    this._panel.webview
+      .postMessage({
+        action: 'getCfg',
+        payload: this._state.get('config', defaultConfig),
+      })
+      .then(undefined, () => null);
   }
 
   private _msgHandler({ action, payload }): void {

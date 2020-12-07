@@ -2,6 +2,11 @@
 
 All notable changes to the "ColdCode" extension will be documented in this file.
 
+## [1.1.1] - 2020-12-07
+
+- Fix #3 copy on selection issue
+- Error catch
+
 ## [1.1.0] - 2020-10-03
 
 - Custom title support

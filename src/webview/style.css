@@ -42,9 +42,10 @@ header .cfg-section-head {
 header .cfg-section-head > div {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5em;
 }
 
-header .cfg-section-head > div:first-child > * {
+header .cfg-section-head > div > span {
   margin-right: 5px;
 }
 
@@ -91,7 +92,13 @@ header .cfg-section .cfg-title {
 }
 
 header .cfg-section input[type='radio'] {
-  margin-bottom: 3px;
+  cursor: pointer;
+  margin: 0;
+}
+
+header .cfg-section input[type='radio'] + label {
+  padding: 0 5px;
+  margin-right: 3px;
 }
 
 header .cfg-section input[type='number'] {
@@ -114,13 +121,23 @@ footer {
   border-top: solid 1px var(--vscode-editor-foreground);
 }
 
+footer button span {
+  opacity: 0.7;
+  display: block;
+}
+
+label {
+  cursor: pointer;
+}
+
 button {
-  padding: 1em 2em;
+  padding: 0.3em 1.2em;
   cursor: pointer;
   outline: none;
   background: var(--vscode-editor-background);
   color: var(--vscode-editor-foreground);
   border: solid 1px var(--vscode-editor-foreground);
+  border-radius: 0.2em;
 }
 
 button:hover {
@@ -128,8 +145,8 @@ button:hover {
   background: var(--vscode-editor-foreground);
 }
 
-button + button {
-  margin-left: 2em;
+button:not(.hide) + button {
+  margin-left: 1em;
 }
 
 .code-container {

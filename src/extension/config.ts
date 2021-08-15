@@ -22,6 +22,7 @@ export type Config = {
   boxShadowX: string;
   boxShadowY: string;
   boxShadowZ: string;
+  fileType: 'svg' | 'png';
 };
 
 export type EditorInfo = {
@@ -43,6 +44,7 @@ const defaultConfig: Config = {
   boxShadowX: '0',
   boxShadowY: '20',
   boxShadowZ: '60',
+  fileType: 'png',
 };
 
 export default defaultConfig;

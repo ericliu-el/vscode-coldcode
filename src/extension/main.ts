@@ -13,16 +13,21 @@ const genNonce = (): string => {
     .join('');
 };
 
-let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/coldcode.png'));
-const saveImage = (data: string): void => {
+const saveImage = ({ data, fileType }: { data: string; fileType: 'svg' | 'png' }): void => {
+  const imageUri = vscode.Uri.file(path.resolve(homedir(), `Desktop/coldcode.${fileType}`));
   vscode.window
     .showSaveDialog({
-      filters: { Images: ['png'] },
-      defaultUri: lastUsedImageUri,
+      filters: { Images: [fileType] },
+      defaultUri: imageUri,
     })
     .then((uri) => {
-      lastUsedImageUri = uri;
-      uri && fs.writeFileSync(uri.fsPath, Buffer.from(data, 'base64'));
+      if (uri) {
+        if (fileType === 'svg') {
+          fs.writeFileSync(uri.fsPath, Buffer.from(data));
+        } else {
+          fs.writeFileSync(uri.fsPath, Buffer.from(data, 'base64'));
+        }
+      }
     });
 };
 

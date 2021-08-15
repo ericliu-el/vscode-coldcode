@@ -125,10 +125,10 @@ const setLineNumber = () => {
 };
 
 const updateTitle = () => {
-  const { windowTitle = 'coldcode' } = editorInfo;
+  const { windowTitle } = editorInfo;
   const titleNode = $('.code-container .navbar-title');
   const customTitle = $('#customTitle').value || '';
-  titleNode.textContent = customTitle.trim() || windowTitle;
+  titleNode.textContent = customTitle.trim() || windowTitle || 'coldcode';
 };
 
 const setBoxShadow = () => {
@@ -149,12 +149,17 @@ const onCfgChange = () => {
   const navNode = $('.code-container .navbar');
   const controlsNode = $('.code-container .navbar-controls');
   const titleNode = $('.code-container .navbar-title');
+  const footerBtnSpans = $$('footer button span');
   const { target, bgTransparent, showControls, showTitle } = coldcodeCfg;
 
   $$('input[name^="cfg-"]').map((node) => {
     const v = coldcodeCfg[node.name.split('-')[1]];
     $('form[name="cfg-form"]')[node.name].value = v;
     setVar(node.name, v);
+  });
+
+  footerBtnSpans.map((span) => {
+    span.textContent = `.${coldcodeCfg['fileType'] || 'png'}`;
   });
 
   showControls === '1' ? delClass('hide', controlsNode) : addClass('hide', controlsNode);
@@ -240,6 +245,7 @@ $('#customTitle').addEventListener('paste', (e) => {
 
 const imgCfg = (scale = 2) => {
   const targetNode = coldcodeCfg['target'] === 'window' ? windowNode : containerNode;
+  const fileType = coldcodeCfg['fileType'] === 'svg' ? 'svg' : 'png';
   windowNode.style.resize = 'none';
   flashAnimation();
   const cfg = {
@@ -252,21 +258,44 @@ const imgCfg = (scale = 2) => {
       height: `${targetNode.offsetHeight}px`,
     },
   };
-  return { targetNode, cfg };
+  return { targetNode, cfg, fileType };
 };
 
 $('.copy').addEventListener('click', async () => {
-  const { targetNode, cfg } = imgCfg(2);
-  const blob = await domtoimage.toBlob(targetNode, cfg);
-  navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+  const { targetNode, cfg, fileType } = imgCfg();
+
+  if (fileType === 'svg') {
+    const svgDocument = elementToSVG(targetNode);
+    const svgString = new XMLSerializer().serializeToString(svgDocument);
+    await navigator.clipboard.writeText(svgString);
+  } else {
+    const blob = await domtoimage.toBlob(targetNode, cfg);
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+  }
+
   postInfo('Copied to clipboard!');
   windowNode.style.resize = '';
 });
 
 $('.download').addEventListener('click', async () => {
-  const { targetNode, cfg } = imgCfg(2);
-  const data = await domtoimage.toPng(targetNode, cfg);
-  vscode.postMessage({ action: 'saveImage', payload: data.split(',')[1] });
+  const { targetNode, cfg, fileType } = imgCfg();
+  let data = '';
+  if (fileType === 'svg') {
+    const svgDocument = elementToSVG(targetNode);
+    data = new XMLSerializer().serializeToString(svgDocument);
+  } else {
+    data = await domtoimage.toPng(targetNode, cfg);
+    data = data.split(',')[1];
+  }
+
+  vscode.postMessage({
+    action: 'saveImage',
+    payload: {
+      fileType,
+      data,
+    },
+  });
+
   windowNode.style.resize = '';
 });
 

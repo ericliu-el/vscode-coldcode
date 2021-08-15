@@ -20,6 +20,6 @@ module.exports = {
     domtoimage: true,
     ClipboardItem: true,
   },
-  ignorePatterns: ['dist/'],
+  ignorePatterns: ['dist/', '*.min.js'],
   rules: {},
 };

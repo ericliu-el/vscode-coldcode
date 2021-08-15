@@ -10,6 +10,7 @@
     <title>ColdCode</title>
     <link rel="stylesheet" href="./style.css" />
     <script nonce="%NONCE%" src="./scripts/dom-to-image.min.js" defer></script>
+    <script nonce="%NONCE%" src="./scripts/dom-to-svg.min.js" defer></script>
     <script nonce="%NONCE%" src="./scripts/main.js" type="module" defer></script>
   </head>
   <body>
@@ -22,6 +23,13 @@
             <label for="cfg-target-container">Container</label>
             <input type="radio" id="cfg-target-window" name="cfg-target" value="window" />
             <label for="cfg-target-window">Window</label>
+          </div>
+          <div>
+            <span>File type:</span>
+            <input type="radio" id="cfg-file-type-png" name="cfg-fileType" value="png" />
+            <label for="cfg-file-type-png">PNG</label>
+            <input type="radio" id="cfg-file-type-svg" name="cfg-fileType" value="svg" />
+            <label for="cfg-file-type-svg">SVG</label>
           </div>
           <div>
             <button type="button" class="reset-config hide">Reset</button>
@@ -113,8 +121,8 @@
     </main>
 
     <footer class="actions">
-      <button type="button" class="download">Download</button>
-      <button type="button" class="copy">Copy</button>
+      <button type="button" class="download">Download<span></span></button>
+      <button type="button" class="copy">Copy<span></span></button>
     </footer>
 
     <div id="flash-fx"></div>

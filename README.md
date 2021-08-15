@@ -5,7 +5,7 @@ An easy and configurable way to take screenshots of your elegant code.
 ## Features
 
 - Realtime configuration, realtime effects
-- Download as `png` file or Copy to your clipboard
+- Download as `png`/`svg` file or Copy to your clipboard
 - Show line numbers (From 1 or real line number)
 - Show title and customize title
 - Many other configuration options
@@ -29,24 +29,26 @@ An easy and configurable way to take screenshots of your elegant code.
 **Configuration Page**
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/screenshot.png" width="85%" />
+<img src="./demo/screenshot.png" />
 </p>
 
-[Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/)
+[Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/) (SVG)
 
-![demo1](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/moonlightIIItalic-JetBransMMono.png)
+![demo1](./demo/moonlightIIItalic-JetBransMMono.png)
 
 [OneDark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) + [FiraCode](https://github.com/tonsky/FiraCode)
 
-![demo2](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/onedarkPro-FiraCode.png)
+![demo2](./demo/onedarkPro-FiraCode.png)
 
 Light (Visual Studio) + Menlo
 
-![demo3](https://raw.githubusercontent.com/ericliu-el/coldcode/master/demo/vscodeLight-Menlo.png)
+![demo3](./demo/vscodeLight-Menlo.png)
 
 ## Credit
 
 Thanks to [dom-to-image](https://github.com/tsayen/dom-to-image) for generating the images from dom.
+
+Thanks to [dom-to-svg](https://github.com/felixfbecker/dom-to-svg) for generating the svgs from dom.
 
 Thanks to [Polacode](https://github.com/octref/polacode) that inspired Coldcode.
 

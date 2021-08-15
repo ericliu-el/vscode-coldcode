@@ -32,7 +32,7 @@ An easy and configurable way to take screenshots of your elegant code.
 <img src="./demo/screenshot.png" />
 </p>
 
-[Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/) (SVG)
+[Moonlight II Italic](https://github.com/atomiks/moonlight-vscode-theme) + [Jetbrans Mono](https://www.jetbrains.com/lp/mono/)
 
 ![demo1](./demo/moonlightIIItalic-JetBransMMono.png)
 
